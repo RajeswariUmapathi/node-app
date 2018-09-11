@@ -1,1 +1,37 @@
+<html>
+<h1>Login Page</h1>
+	<head>
+		
+	</head>
+	<body>
+		<script>
+			function submit() {
+				var userName = document.getElementById("userName").value;
+				var password = document.getElementById("password").value;
+				var requestObject = {
+					userName: userName,
+					password: password
+				};
+				var xhttp = new XMLHttpRequest();
+			    xhttp.onreadystatechange = function() {
+			      if (this.readyState == 4 && this.status == 200) {
+			      	console.log("SUCCESS");
+			        // document.getElementById("demo").innerHTML = this.responseText;
+			      }
+			    };
+				xhttp.open("POST", "/token", true);
+				xhttp.setRequestHeader("Content-type", "application/json");
+				var data = JSON.stringify(requestObject);
+				xhttp.send(data);
+			}
+		</script>
+		<div>
+		  Username:  <input type="text" name="userName" placeholder="User Name" id="userName"/>
+		  <br><br>
+		  Password:   <input type="password" name="password" placeholder="Password" id="password"/>
+		  <br><br>
+		  <input type="button" value="Submit" onclick="submit()"/>
+		</div> 
+	</body>
+</html>
 
